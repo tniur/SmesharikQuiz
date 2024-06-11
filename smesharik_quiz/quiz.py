@@ -3,8 +3,12 @@ class SmesharikQuiz:
         self.smesharik = None
 
     def ask_question(self, question):
-        answer = input(question + " (Да/Нет): ").strip().lower()
-        return answer == 'да'
+        while True:
+            answer = input(question + " (Да/Нет): ").strip().lower()
+            if answer in ['да', 'нет']:
+                return answer == 'да'
+            else:
+                print("Пожалуйста, введите 'Да' или 'Нет'.")
 
     def start_quiz(self):
         if self.ask_question("Вы ребенок?"):
