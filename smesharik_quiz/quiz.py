@@ -43,7 +43,7 @@ class SmesharikQuiz:
             else:
                 if self.ask_question("У вас есть рога?"):
                     self.smesharik = "Лосяш"
-                else:
+                elif self.ask_question("У вас есть огород?"):
                     self.smesharik = "Капатыч"
 
         self.display_result()
