@@ -31,3 +31,11 @@ class SmesharikQuiz:
                     self.smesharik = "Лосяш"
                 else:
                     self.smesharik = "Капатыч"
+
+        self.display_result()
+
+    def display_result(self):
+        if self.smesharik:
+            print(f"Вы - {self.smesharik}!")
+        else:
+            print("Не удалось определить вашего персонажа.")
