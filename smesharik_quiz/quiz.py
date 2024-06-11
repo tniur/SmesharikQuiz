@@ -17,6 +17,7 @@ class SmesharikQuiz:
                 return answer == 'да'
             else:
                 print("Пожалуйста, введите 'Да' или 'Нет'.")
+
     def check_smesharik(self):
         if self.smesharik:
             return True
