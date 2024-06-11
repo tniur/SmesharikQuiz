@@ -18,6 +18,12 @@ class SmesharikQuiz:
             else:
                 print("Пожалуйста, введите 'Да' или 'Нет'.")
 
+    def check_smesharik(self):
+        if self.smesharik:
+            return True
+        else:
+            return False
+
     def start_quiz(self):
         self.greet_user()
         if self.ask_question("Вы ребенок?"):
