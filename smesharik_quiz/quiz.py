@@ -1,6 +1,13 @@
+# smesharik_quiz/quiz.py
 class SmesharikQuiz:
     def __init__(self):
         self.smesharik = None
+
+    def greet_user(self):
+        print("Добро пожаловать в тест 'Какой вы Смешарик'! Удачного прохождения теста!")
+
+    def thank_user(self):
+        print("Спасибо за прохождение теста! Надеемся, вам было интересно.")
 
     def ask_question(self, question):
         while True:
@@ -11,6 +18,7 @@ class SmesharikQuiz:
                 print("Пожалуйста, введите 'Да' или 'Нет'.")
 
     def start_quiz(self):
+        self.greet_user()
         if self.ask_question("Вы ребенок?"):
             if self.ask_question("Вы летали в космос?"):
                 if self.ask_question("Вы коллекционируете кактусы?"):
@@ -37,6 +45,7 @@ class SmesharikQuiz:
                     self.smesharik = "Капатыч"
 
         self.display_result()
+        self.thank_user()
 
     def display_result(self):
         if self.smesharik:
