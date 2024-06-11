@@ -36,12 +36,14 @@ class SmesharikQuiz:
             if self.ask_question("Вы птица?"):
                 if self.ask_question("Вы умеете играть на пианино?"):
                     self.smesharik = "Кар-Карыч"
-                else:
+                elif self.ask_question("Вы живете в дупле?"):
                     self.smesharik = "Совунья"
+                elif self.ask_question("Вы умеете управлять самолетом?"):
+                    self.smesharik = "Пин"
             else:
                 if self.ask_question("У вас есть рога?"):
                     self.smesharik = "Лосяш"
-                else:
+                elif self.ask_question("У вас есть огород?"):
                     self.smesharik = "Капатыч"
 
         self.display_result()
