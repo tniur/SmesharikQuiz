@@ -38,6 +38,8 @@ class SmesharikQuiz:
                     self.smesharik = "Кар-Карыч"
                 elif self.ask_question("Вы живете в дупле?"):
                     self.smesharik = "Совунья"
+                elif self.ask_question("Вы умеете управлять самолетом?"):
+                    self.smesharik = "Пин"
             else:
                 if self.ask_question("У вас есть рога?"):
                     self.smesharik = "Лосяш"
