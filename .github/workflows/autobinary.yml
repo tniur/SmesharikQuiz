@@ -26,7 +26,7 @@ jobs:
 
     - name: Build binary
       run: |
-        python main.py build
+        python build_example.py build
 
     - name: Upload binary
       uses: actions/upload-artifact@v2
