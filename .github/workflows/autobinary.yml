@@ -32,4 +32,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: myapp
-        path: ${{ github.workspace }}/build_example/bin
+        path: build/exe.*
