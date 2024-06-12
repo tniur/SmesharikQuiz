@@ -28,7 +28,7 @@ jobs:
     - name: Packing
       run: |
         mkdir compiled
-        mv ${{ github.workspace }}/SmesharikQuiz/__pycache__/*.pyc compiled
+        mv ${{ github.workspace }}/__pycache__/*.pyc compiled
         zip -r compiled.zip compiled
 
     - name: Create release
