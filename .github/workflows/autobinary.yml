@@ -26,10 +26,10 @@ jobs:
 
     - name: Build binary
       run: |
-        python build_example.py build
+        python build_example/build_example.py build
 
     - name: Upload binary
       uses: actions/upload-artifact@v2
       with:
         name: myapp
-        path: build/
+        path: ${{ github.workspace }}/build_example/bin
