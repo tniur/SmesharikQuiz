@@ -23,7 +23,7 @@ jobs:
 
     - name: Building
       run: |
-        python -m compileall ./SmesharikQuiz
+        python -m compileall
 
     - name: Packing
       run: |
