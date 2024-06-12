@@ -1,47 +1,55 @@
-name: Create Release
+name: Release
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
+
+permissions:
+  contents: write
+  packages: write
 
 jobs:
-  create-release:
+  release:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.9'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+    - name: Building
+      run: |
+        python -m compileall ./SmesharikQuiz
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: v${{ github.run_number }}
-          release_name: Release ${{ github.run_number }}
-          body: |
-            Automatic release from GitHub Actions.
-          draft: false
-          prerelease: false
+    - name: Packing
+      run: |
+        mkdir compiled
+        mv ${{ github.workspace }}/SmesharikQuiz/__pycache__/*.pyc compiled
+        zip -r compiled.zip compiled
 
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: path/to/your/asset.zip
-          asset_name: your-asset.zip
-          asset_content_type: application/zip
+    - name: Create release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.run_number }}
+        release_name: Release ${{ github.run_number }}
+        draft: false
+        prerelease: false
+        body: Automated release
+
+    - name: Upload
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./compiled.zip
+        asset_name: compiled.zip
+        asset_content_type: application/zip
