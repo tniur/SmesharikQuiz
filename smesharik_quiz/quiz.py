@@ -61,3 +61,4 @@ class SmesharikQuiz:
             print(f"Вы - {self.smesharik}!")
         else:
             print("Не удалось определить вашего персонажа.")
+            return False
